@@ -23,11 +23,11 @@ public class BeerController {
 
     @GetMapping
     List<BeerDto> getAllBeers() {
-        return beerService.getAll();
+        return beerService.findAllBeers();
     }
 
-//    @GetMapping("/{id}")
-//    Beer findById(@PathVariable Long id) {
-//        return beerRepository.findById(id).orElseThrow(RuntimeException::new);
-//    }
+    @GetMapping("/{id}")
+    BeerDto findBeerById(@PathVariable Long id) {
+        return beerService.findBeerById(id).orElseThrow(IllegalArgumentException::new);
+    }
 }
