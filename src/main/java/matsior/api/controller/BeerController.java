@@ -1,8 +1,8 @@
 package matsior.api.controller;
 
-import matsior.api.model.Beer;
 import matsior.api.model.BeerDto;
 import matsior.api.service.BeerService;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +12,13 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/api/beer")
+@RequestMapping(
+        path = "/api/beer",
+        produces = {
+                MediaType.APPLICATION_JSON_VALUE,
+                MediaType.APPLICATION_XML_VALUE
+        }
+)
 public class BeerController {
 
     private final BeerService beerService;
