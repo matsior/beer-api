@@ -24,6 +24,7 @@ public class BeerService {
     }
 
     public Optional<BeerDto> findBeerById(long id) {
-        return beerRepository.findById(id).map(BeerMapper::map);
+        return beerRepository.findById(id)
+                .map(BeerMapper::map);
     }
 }

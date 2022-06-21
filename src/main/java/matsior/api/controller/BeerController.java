@@ -3,6 +3,7 @@ package matsior.api.controller;
 import matsior.api.model.BeerDto;
 import matsior.api.service.BeerService;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,7 +34,9 @@ public class BeerController {
     }
 
     @GetMapping("/{id}")
-    BeerDto findBeerById(@PathVariable Long id) {
-        return beerService.findBeerById(id).orElseThrow(IllegalArgumentException::new);
+    ResponseEntity<BeerDto> findBeerById(@PathVariable("id") Long id) {
+        return beerService.findBeerById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 }
