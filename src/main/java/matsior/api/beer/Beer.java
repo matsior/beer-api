@@ -3,12 +3,9 @@ package matsior.api.beer;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import matsior.api.style.Style;
+import matsior.api.style.BeerStyle;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @AllArgsConstructor
@@ -20,7 +17,8 @@ public class Beer {
     private Long id;
     private java.lang.String name;
     private java.lang.String country;
-    private Style style;
     private Double alcohol;
     private Double blg;
+    @ManyToOne
+    private BeerStyle beerStyle;
 }

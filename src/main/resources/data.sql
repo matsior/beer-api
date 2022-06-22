@@ -1,6 +1,12 @@
 INSERT INTO
-    beer(name, country, style, alcohol, blg)
+    beer_style(name, description)
 VALUES
-       ('Tyskie', 'Poland', 'LAGER', 5.2, 11.7),
-       ('Perła Export', 'Poland', 'DORTMUNDER_EXPORT', 5.6, null),
-       ('Żywiec Białe', 'Poland', 'WITBIER', 4.9, 11.6);
+    ('Pale Lager', 'mniam mniam'),
+    ('Witbier', 'też dobre');
+
+INSERT INTO
+    beer(name, country, alcohol, blg, beer_style_id)
+VALUES
+       ('Tyskie', 'Poland', 5.2, 11.7, 1),
+       ('Perła Export', 'Poland', 5.6, null, 2),
+       ('Żywiec Białe', 'Poland', 4.3, 8.9, 2);

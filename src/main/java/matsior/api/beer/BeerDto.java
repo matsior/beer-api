@@ -1,8 +1,8 @@
 package matsior.api.beer;
 
-public record BeerDto (String name,
-                       String country,
-                       String style,
-                       Double alcohol,
-                       Double blg){
-}
+public record BeerDto(Long id,
+                      String name,
+                      String country,
+                      Double alcohol,
+                      Double blg,
+                      String beerStyle) { }
