@@ -1,4 +1,4 @@
-package matsior.api.model;
+package matsior.api.beer;
 
 public record BeerDto (String name,
                        String country,

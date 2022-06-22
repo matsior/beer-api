@@ -1,4 +1,4 @@
-package matsior.api.model;
+package matsior.api.style;
 
 import org.springframework.stereotype.Component;
 

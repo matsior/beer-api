@@ -1,6 +1,5 @@
-package matsior.api.repository;
+package matsior.api.beer;
 
-import matsior.api.model.Beer;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

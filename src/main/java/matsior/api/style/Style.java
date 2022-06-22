@@ -1,4 +1,4 @@
-package matsior.api.model;
+package matsior.api.style;
 
 public enum Style {
     PALE_LAGER("Pale Lager"),

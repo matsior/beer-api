@@ -1,8 +1,9 @@
-package matsior.api.model;
+package matsior.api.beer;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import matsior.api.style.Style;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

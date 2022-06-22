@@ -1,8 +1,5 @@
-package matsior.api.service;
+package matsior.api.beer;
 
-import matsior.api.model.BeerDto;
-import matsior.api.model.BeerMapper;
-import matsior.api.repository.BeerRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

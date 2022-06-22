@@ -1,4 +1,4 @@
-package matsior.api.model;
+package matsior.api.beer;
 
 public class BeerMapper {
     public static BeerDto map(Beer beer) {
