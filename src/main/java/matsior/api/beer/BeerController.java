@@ -1,5 +1,6 @@
 package matsior.api.beer;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import matsior.api.beer.dto.BeerDto;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +29,7 @@ public class BeerController {
     }
 
     @GetMapping
+    @JsonView(BeerView.Simple.class)
     List<BeerDto> getAllBeers() {
         return beerService.findAllBeers();
     }
