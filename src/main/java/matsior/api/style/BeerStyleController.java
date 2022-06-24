@@ -2,11 +2,10 @@ package matsior.api.style;
 
 import matsior.api.style.dto.BeerStyleDto;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -28,5 +27,15 @@ public class BeerStyleController {
         return beerStyleService.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PostMapping
+    ResponseEntity<BeerStyleDto> saveBeerStyle(@RequestBody BeerStyleDto beerStyle) {
+        BeerStyleDto savedBeerStyle = beerStyleService.saveBeerStyle(beerStyle);
+        URI savedBeerStyleUri = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("{id}")
+                .buildAndExpand(savedBeerStyle.getId())
+                .toUri();
+        return ResponseEntity.created(savedBeerStyleUri).body(savedBeerStyle);
     }
 }
