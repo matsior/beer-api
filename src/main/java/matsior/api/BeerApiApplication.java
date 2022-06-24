@@ -1,11 +1,12 @@
 package matsior.api;
 
-import matsior.api.style.BeerStyle;
-import matsior.api.style.BeerStyleDto;
+import matsior.api.beer.Beer;
+import matsior.api.beer.BeerDto;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.PropertyMap;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.util.Optional;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class BeerApiApplication {
@@ -14,4 +15,20 @@ public class BeerApiApplication {
         SpringApplication.run(BeerApiApplication.class, args);
     }
 
+    @Bean
+    public ModelMapper getModelMapper() {
+        ModelMapper modelMapper = new ModelMapper();
+        modelMapper.addMappings(new PropertyMap<Beer, BeerDto>() {
+            @Override
+            protected void configure() {
+                map().setId(source.getId());
+                map().setName(source.getName());
+                map().setCountry(source.getCountry());
+                map().setAlcohol(source.getAlcohol());
+                map().setBlg(source.getBlg());
+                map().setBeerStyle(source.getBeerStyle().getName());
+            }
+        });
+        return modelMapper;
+    }
 }
