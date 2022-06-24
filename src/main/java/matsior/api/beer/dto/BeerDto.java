@@ -1,4 +1,4 @@
-package matsior.api.beer;
+package matsior.api.beer.dto;
 
 import lombok.Getter;
 import lombok.Setter;

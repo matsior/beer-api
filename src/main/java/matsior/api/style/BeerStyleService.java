@@ -1,5 +1,6 @@
 package matsior.api.style;
 
+import matsior.api.style.dto.BeerStyleDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 

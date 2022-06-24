@@ -1,9 +1,9 @@
 package matsior.api;
 
 import matsior.api.beer.Beer;
-import matsior.api.beer.BeerDto;
+import matsior.api.beer.dto.BeerDto;
 import matsior.api.style.BeerStyle;
-import matsior.api.style.BeerStyleDto;
+import matsior.api.style.dto.BeerStyleDto;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
 import org.springframework.boot.SpringApplication;
@@ -20,6 +20,7 @@ public class BeerApiApplication {
     @Bean
     public ModelMapper getModelMapper() {
         ModelMapper modelMapper = new ModelMapper();
+
         modelMapper.addMappings(new PropertyMap<Beer, BeerDto>() {
             @Override
             protected void configure() {

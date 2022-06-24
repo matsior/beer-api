@@ -1,4 +1,4 @@
-package matsior.api.style;
+package matsior.api.style.dto;
 
 import lombok.Getter;
 import lombok.Setter;
