@@ -29,4 +29,10 @@ public class BeerStyleService {
         return beerStyleRepository.findById(id)
                 .map(beerStyle -> modelMapper.map(beerStyle, BeerStyleDto.class));
     }
+
+    public BeerStyleDto saveBeerStyle(BeerStyleDto beerStyleDto) {
+        BeerStyle beerStyle = modelMapper.map(beerStyleDto, BeerStyle.class);
+        BeerStyle savedBeerStyle = beerStyleRepository.save(beerStyle);
+        return modelMapper.map(savedBeerStyle, BeerStyleDto.class);
+    }
 }
