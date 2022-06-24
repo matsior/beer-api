@@ -41,6 +41,15 @@ public class BeerApiApplication {
                 map().setDescription(source.getDescription());
             }
         });
+
+        modelMapper.addMappings(new PropertyMap<BeerStyleDto, BeerStyle>() {
+            @Override
+            protected void configure() {
+                map().setId(source.getId());
+                map().setName(source.getName());
+                map().setDescription(source.getDescription());
+            }
+        });
         return modelMapper;
     }
 }
