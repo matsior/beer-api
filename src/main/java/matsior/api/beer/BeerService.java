@@ -1,6 +1,7 @@
 package matsior.api.beer;
 
 import matsior.api.beer.dto.BeerDto;
+import matsior.api.beer.dto.BeerSaveRequestDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -27,5 +28,11 @@ public class BeerService {
     public Optional<BeerDto> findBeerById(long id) {
         return beerRepository.findById(id)
                 .map(beer -> modelMapper.map(beer, BeerDto.class));
+    }
+
+    public BeerSaveRequestDto saveBeer(BeerSaveRequestDto beerSaveRequestDto) {
+        Beer beerToSave = modelMapper.map(beerSaveRequestDto, Beer.class);
+        Beer savedBeer = beerRepository.save(beerToSave);
+        return modelMapper.map(savedBeer, BeerSaveRequestDto.class);
     }
 }

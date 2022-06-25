@@ -2,13 +2,13 @@ package matsior.api.beer;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import matsior.api.beer.dto.BeerDto;
+import matsior.api.beer.dto.BeerSaveRequestDto;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 
@@ -39,5 +39,16 @@ public class BeerController {
         return beerService.findBeerById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PostMapping
+    ResponseEntity<BeerSaveRequestDto> saveBeer(@RequestBody BeerSaveRequestDto beerSaveRequestDto) {
+        BeerSaveRequestDto savedBeer = beerService.saveBeer(beerSaveRequestDto);
+        URI savedBeerUri = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(savedBeer.getId())
+                .toUri();
+        return ResponseEntity.created(savedBeerUri).body(savedBeer);
+
     }
 }
