@@ -19,5 +19,6 @@ public class Beer {
     private Double alcohol;
     private Double blg;
     @ManyToOne
+    @JoinColumn(name = "beer_style_id")
     private BeerStyle beerStyle;
 }

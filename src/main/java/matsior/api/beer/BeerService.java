@@ -22,6 +22,37 @@ public class BeerService {
                 .toList();
     }
 
+    public List<BeerDto> findAllBeers(double alcohol) {
+        return beerRepository.findAll()
+                .stream()
+                .filter(beer -> beer.getAlcohol() >= alcohol)
+                .map(beerMapper::map)
+                .toList();
+    }
+
+    public List<BeerDto> findAllBeers(double alcohol, String country) {
+        return beerRepository.findAll()
+                .stream()
+                .filter(beer -> beer.getCountry().equals(country))
+                .filter(beer -> beer.getAlcohol() >= alcohol)
+                .map(beerMapper::map)
+                .toList();
+    }
+
+    public List<BeerDto> findAllBeersByCountry(String country) {
+        return beerRepository.findAllByCountryIgnoreCase(country)
+                .stream()
+                .map(beerMapper::map)
+                .toList();
+    }
+
+    public List<BeerDto> findAllWithAlcoholGreaterThanEqual(double alcohol) {
+        return beerRepository.findAllByAlcoholGreaterThanEqual(alcohol)
+                .stream()
+                .map(beerMapper::map)
+                .toList();
+    }
+
     public Optional<BeerDto> findBeerById(long id) {
         return beerRepository.findById(id)
                 .map(beerMapper::map);

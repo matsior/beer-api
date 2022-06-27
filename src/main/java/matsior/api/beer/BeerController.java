@@ -30,8 +30,17 @@ public class BeerController {
 
     @GetMapping
     @JsonView(BeerView.Simple.class)
-    List<BeerDto> getAllBeers() {
-        return beerService.findAllBeers();
+    List<BeerDto> getAllBeers(
+            @RequestParam(name = "country", required = false) String country,
+            @RequestParam(name = "alc", required = false, defaultValue = "0") Double alc
+    ) {
+        if (country != null) {
+            return beerService.findAllBeersByCountry(country);
+        }
+//        if (alc != null) {
+            return beerService.findAllWithAlcoholGreaterThanEqual(alc);
+//        }
+//        return beerService.findAllBeers();
     }
 
     @GetMapping("/{id}")
