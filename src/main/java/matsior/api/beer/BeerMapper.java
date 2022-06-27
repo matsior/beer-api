@@ -18,6 +18,7 @@ public class BeerMapper {
         return new BeerDto(
                 beer.getId(),
                 beer.getName(),
+                beer.getDescription(),
                 beer.getCountry(),
                 beer.getAlcohol(),
                 beer.getBlg(),
@@ -28,6 +29,7 @@ public class BeerMapper {
         return new Beer(
                 EMPTY_ID,
                 beerSaveRequestDto.name(),
+                beerSaveRequestDto.description(),
                 beerSaveRequestDto.country(),
                 beerSaveRequestDto.alcohol(),
                 beerSaveRequestDto.blg(),
@@ -38,6 +40,7 @@ public class BeerMapper {
         return new BeerSaveRequestDto(
                 savedBeer.getId(),
                 savedBeer.getName(),
+                savedBeer.getDescription(),
                 savedBeer.getCountry(),
                 savedBeer.getAlcohol(),
                 savedBeer.getBlg(),
