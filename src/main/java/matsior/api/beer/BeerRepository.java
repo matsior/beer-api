@@ -8,4 +8,5 @@ public interface BeerRepository extends CrudRepository<Beer, Long> {
     List<Beer> findAll();
     List<Beer> findAllByCountryIgnoreCase(String country);
     List<Beer> findAllByAlcoholGreaterThanEqual(double alcohol);
+    List<Beer> findAllByCountryContainsIgnoreCaseAndAlcoholGreaterThanEqual(String country, double alcohol);
 }

@@ -31,6 +31,13 @@ public class BeerService {
         }
     }
 
+    public List<BeerDto> findAllBeersWithParameters(String country, double alcohol) {
+        return beerRepository.findAllByCountryContainsIgnoreCaseAndAlcoholGreaterThanEqual(country, alcohol)
+                .stream()
+                .map(beerMapper::map)
+                .toList();
+    }
+
     public List<BeerDto> findAllBeers() {
         return beerRepository.findAll()
                 .stream()
