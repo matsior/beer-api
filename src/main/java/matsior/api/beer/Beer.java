@@ -10,7 +10,6 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Setter
-@Builder
 public class Beer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

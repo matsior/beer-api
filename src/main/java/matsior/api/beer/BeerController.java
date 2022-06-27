@@ -49,6 +49,5 @@ public class BeerController {
                 .buildAndExpand(savedBeer.id())
                 .toUri();
         return ResponseEntity.created(savedBeerUri).body(savedBeer);
-
     }
 }
