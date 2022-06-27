@@ -34,13 +34,7 @@ public class BeerController {
             @RequestParam(name = "country", required = false) String country,
             @RequestParam(name = "alc", required = false, defaultValue = "0") Double alc
     ) {
-        if (country != null) {
-            return beerService.findAllBeersByCountry(country);
-        }
-//        if (alc != null) {
-            return beerService.findAllWithAlcoholGreaterThanEqual(alc);
-//        }
-//        return beerService.findAllBeers();
+        return beerService.findAllBeers(country, alc);
     }
 
     @GetMapping("/{id}")
