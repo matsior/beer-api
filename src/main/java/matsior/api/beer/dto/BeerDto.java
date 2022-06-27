@@ -1,26 +1,22 @@
 package matsior.api.beer.dto;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import lombok.Getter;
-import lombok.Setter;
 import matsior.api.beer.BeerView;
 
-@Getter
-@Setter
-public class BeerDto {
+public record BeerDto(
+        @JsonView(BeerView.Simple.class)
+        Long id,
 
-    @JsonView(BeerView.Simple.class)
-    private Long id;
+        @JsonView(BeerView.Simple.class)
+        String name,
 
-    @JsonView(BeerView.Simple.class)
-    private String name;
+        String country,
 
-    private String country;
+        Double alcohol,
 
-    private Double alcohol;
+        Double blg,
 
-    private Double blg;
-
-    @JsonView(BeerView.Simple.class)
-    private String beerStyle;
+        @JsonView(BeerView.Simple.class)
+        String beerStyle
+) {
 }

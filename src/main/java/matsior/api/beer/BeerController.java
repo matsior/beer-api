@@ -46,7 +46,7 @@ public class BeerController {
         BeerSaveRequestDto savedBeer = beerService.saveBeer(beerSaveRequestDto);
         URI savedBeerUri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
-                .buildAndExpand(savedBeer.getId())
+                .buildAndExpand(savedBeer.id())
                 .toUri();
         return ResponseEntity.created(savedBeerUri).body(savedBeer);
 

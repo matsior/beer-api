@@ -34,7 +34,7 @@ public class BeerStyleController {
         BeerStyleDto savedBeerStyle = beerStyleService.saveBeerStyle(beerStyle);
         URI savedBeerStyleUri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("{id}")
-                .buildAndExpand(savedBeerStyle.getId())
+                .buildAndExpand(savedBeerStyle.id())
                 .toUri();
         return ResponseEntity.created(savedBeerStyleUri).body(savedBeerStyle);
     }

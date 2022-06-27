@@ -1,9 +1,6 @@
 package matsior.api.beer;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import matsior.api.style.BeerStyle;
 
 import javax.persistence.*;
@@ -13,6 +10,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Setter
+@Builder
 public class Beer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

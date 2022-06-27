@@ -14,18 +14,4 @@ public class BeerApiApplication {
     public static void main(String[] args) {
         SpringApplication.run(BeerApiApplication.class, args);
     }
-
-    @Bean
-    public ModelMapper getModelMapper() {
-        ModelMapper modelMapper = new ModelMapper();
-
-        modelMapper.addMappings(new PropertyMap<Beer, BeerDto>() {
-            @Override
-            protected void configure() {
-                map().setBeerStyle(source.getBeerStyle().getName());
-            }
-        });
-
-        return modelMapper;
-    }
 }
