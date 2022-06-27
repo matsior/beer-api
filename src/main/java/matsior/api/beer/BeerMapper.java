@@ -43,5 +43,4 @@ public class BeerMapper {
                 savedBeer.getBlg(),
                 savedBeer.getId());
     }
-
 }

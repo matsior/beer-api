@@ -1,5 +1,6 @@
 package matsior.api.style;
 
+import lombok.RequiredArgsConstructor;
 import matsior.api.style.dto.BeerStyleDto;
 import org.springframework.stereotype.Service;
 
@@ -7,30 +8,21 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class BeerStyleService {
     private final BeerStyleRepository beerStyleRepository;
-
-    public BeerStyleService(BeerStyleRepository beerStyleRepository) {
-        this.beerStyleRepository = beerStyleRepository;
-    }
+    private final BeerStyleMapper beerStyleMapper;
 
     public List<BeerStyleDto> findAllStyles() {
         return beerStyleRepository.findAll()
                 .stream()
-                .map(beer -> new BeerStyleDto(
-                        beer.getId(),
-                        beer.getName(),
-                        beer.getDescription()))
+                .map(beerStyleMapper::map)
                 .toList();
     }
 
-
     public Optional<BeerStyleDto> findById(Long id) {
         return beerStyleRepository.findById(id)
-                .map(beer -> new BeerStyleDto(
-                        beer.getId(),
-                        beer.getName(),
-                        beer.getDescription()));
+                .map(beerStyleMapper::map);
     }
 
     public BeerStyleDto saveBeerStyle(BeerStyleDto beerStyleDto) {
@@ -39,9 +31,6 @@ public class BeerStyleService {
                 beerStyleDto.name(),
                 beerStyleDto.description());
         BeerStyle savedBeerStyle = beerStyleRepository.save(beerStyle);
-        return new BeerStyleDto(
-                savedBeerStyle.getId(),
-                savedBeerStyle.getName(),
-                savedBeerStyle.getDescription());
+        return beerStyleMapper.map(savedBeerStyle);
     }
 }
