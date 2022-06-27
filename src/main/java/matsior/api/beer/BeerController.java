@@ -32,9 +32,10 @@ public class BeerController {
     @JsonView(BeerView.Simple.class)
     List<BeerDto> getAllBeers(
             @RequestParam(defaultValue = "") String country,
-            @RequestParam(defaultValue = "0") Double alc
+            @RequestParam(defaultValue = "0") Double alc,
+            @RequestParam(defaultValue = "id") String sort
     ) {
-        return beerService.findAllBeersWithParameters(country, alc);
+        return beerService.findAllBeersWithParameters(country, alc, sort);
     }
 
     @GetMapping("/{id}")
