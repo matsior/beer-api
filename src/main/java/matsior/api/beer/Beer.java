@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import matsior.api.producer.Producer;
 import matsior.api.style.BeerStyle;
 
 import javax.persistence.*;
@@ -18,6 +19,8 @@ public class Beer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    @ManyToOne
+    private Producer producer;
     private String description;
     private String country;
     private Double alcohol;

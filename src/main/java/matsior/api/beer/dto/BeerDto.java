@@ -11,6 +11,9 @@ public record BeerDto(
         String name,
 
         @JsonView(BeerView.Simple.class)
+        String producerName,
+
+        @JsonView(BeerView.Simple.class)
         String description,
 
         @JsonView(BeerView.Simple.class)
