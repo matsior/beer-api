@@ -1,4 +1,8 @@
 package matsior.api.producer;
 
-public class ProducerDto {
+public record ProducerDto (
+        Long id,
+        String name,
+        String description
+) {
 }
