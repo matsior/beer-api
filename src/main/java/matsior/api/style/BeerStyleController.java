@@ -9,7 +9,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/style")
+@RequestMapping("/api/styles")
 public class BeerStyleController {
     private final BeerStyleService beerStyleService;
 
