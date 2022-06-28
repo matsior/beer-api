@@ -37,6 +37,6 @@ public class BeerService {
     public BeerSaveRequestDto saveBeer(BeerSaveRequestDto beerSaveRequestDto) {
         Beer beerToSave = beerMapper.map(beerSaveRequestDto);
         Beer savedBeer = beerRepository.save(beerToSave);
-        return beerMapper.mapToDto(savedBeer);
+        return beerMapper.mapToSaveRequest(savedBeer);
     }
 }

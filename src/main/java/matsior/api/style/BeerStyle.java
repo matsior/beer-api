@@ -1,5 +1,6 @@
 package matsior.api.style;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,7 @@ public class BeerStyle {
     private Long id;
     private String name;
     private String description;
+    @JsonIgnore
     @OneToMany(mappedBy = "beerStyle")
     private List<Beer> beers;
 

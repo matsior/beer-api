@@ -39,7 +39,7 @@ public class BeerMapper {
         );
     }
 
-    public BeerSaveRequestDto mapToDto(Beer savedBeer) {
+    public BeerSaveRequestDto mapToSaveRequest(Beer savedBeer) {
         return new BeerSaveRequestDto(
                 savedBeer.getId(),
                 savedBeer.getName(),

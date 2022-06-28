@@ -29,7 +29,6 @@ public class BeerController {
     }
 
     @GetMapping
-    @JsonView(BeerView.Simple.class)
     List<BeerDto> getAllBeers(
             @RequestParam(defaultValue = "") String country,
             @RequestParam(defaultValue = "0") Double alc,
