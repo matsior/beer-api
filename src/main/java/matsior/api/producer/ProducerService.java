@@ -1,6 +1,7 @@
 package matsior.api.producer;
 
 import lombok.RequiredArgsConstructor;
+import matsior.api.producer.dto.ProducerDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

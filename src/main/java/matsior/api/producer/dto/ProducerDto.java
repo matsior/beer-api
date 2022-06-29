@@ -1,4 +1,4 @@
-package matsior.api.producer;
+package matsior.api.producer.dto;
 
 public record ProducerDto (
         Long id,
