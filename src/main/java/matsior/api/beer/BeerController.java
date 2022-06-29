@@ -1,6 +1,5 @@
 package matsior.api.beer;
 
-import com.fasterxml.jackson.annotation.JsonView;
 import matsior.api.beer.dto.BeerDto;
 import matsior.api.beer.dto.BeerSaveRequestDto;
 import org.springframework.http.MediaType;
@@ -8,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
@@ -45,7 +45,7 @@ public class BeerController {
     }
 
     @PostMapping
-    ResponseEntity<BeerSaveRequestDto> saveBeer(@RequestBody BeerSaveRequestDto beerSaveRequestDto) {
+    ResponseEntity<BeerSaveRequestDto> saveBeer(@Valid @RequestBody BeerSaveRequestDto beerSaveRequestDto) {
         BeerSaveRequestDto savedBeer = beerService.saveBeer(beerSaveRequestDto);
         URI savedBeerUri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
