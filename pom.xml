@@ -15,6 +15,7 @@
     <description>beer-api</description>
     <properties>
         <java.version>17</java.version>
+        <swagger.version>2.9.2</swagger.version>
     </properties>
     <dependencies>
         <dependency>
@@ -37,6 +38,11 @@
             <scope>runtime</scope>
         </dependency>
         <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
@@ -54,13 +60,14 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
-            <version>2.9.2</version>
+            <version>${swagger.version}</version>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
-            <version>2.9.2</version>
+            <version>${swagger.version}</version>
         </dependency>
+
 
 
         <dependency>
