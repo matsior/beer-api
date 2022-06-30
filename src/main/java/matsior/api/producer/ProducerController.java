@@ -30,4 +30,11 @@ public class ProducerController {
                 .toUri();
         return ResponseEntity.created(savedProducerUri).body(savedProducer);
     }
+
+    @PutMapping("/{id}")
+    ResponseEntity<?> replaceProducer(@PathVariable Long id, @RequestBody ProducerDto producerDto) {
+        return producerService.replaceProducer(id, producerDto)
+                .map(c -> ResponseEntity.noContent().build())
+                .orElse(ResponseEntity.notFound().build());
+    }
 }

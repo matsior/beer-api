@@ -20,4 +20,12 @@ public class ProducerMapper {
                 dto.description()
         );
     }
+
+    public Producer map(Long id, ProducerDto producerDto) {
+        return new Producer(
+                id,
+                producerDto.name(),
+                producerDto.description()
+        );
+    }
 }
