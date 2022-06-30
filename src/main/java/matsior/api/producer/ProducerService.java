@@ -3,6 +3,7 @@ package matsior.api.producer;
 import lombok.RequiredArgsConstructor;
 import matsior.api.producer.dto.ProducerDto;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -34,5 +35,22 @@ public class ProducerService {
         Producer producerToUpdate = producerMapper.map(id, producerDto);
         Producer updatedEntity = producerRepository.save(producerToUpdate);
         return Optional.of(producerMapper.map(updatedEntity));
+    }
+
+    @Transactional
+    public Optional<ProducerDto> updateProducer(Long id, ProducerDto producerDto) {
+        return producerRepository.findById(id)
+                .map(target -> setEntityFields(producerDto, target))
+                .map(producerMapper::map);
+    }
+
+    private Producer setEntityFields(ProducerDto source, Producer target) {
+        if (source.name() != null) {
+            target.setName(source.name());
+        }
+        if (source.description() != null) {
+            target.setDescription(source.description());
+        }
+        return target;
     }
 }

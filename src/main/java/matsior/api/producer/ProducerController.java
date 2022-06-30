@@ -37,4 +37,11 @@ public class ProducerController {
                 .map(c -> ResponseEntity.noContent().build())
                 .orElse(ResponseEntity.notFound().build());
     }
+
+    @PatchMapping("/{id}")
+    ResponseEntity<?> updateProducer(@PathVariable Long id, @RequestBody ProducerDto producerDto) {
+        return producerService.updateProducer(id, producerDto)
+                .map(p -> ResponseEntity.noContent().build())
+                .orElse(ResponseEntity.notFound().build());
+    }
 }
