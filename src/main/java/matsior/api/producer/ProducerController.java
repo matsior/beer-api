@@ -2,10 +2,11 @@ package matsior.api.producer;
 
 import lombok.RequiredArgsConstructor;
 import matsior.api.producer.dto.ProducerDto;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -18,5 +19,15 @@ public class ProducerController {
     @GetMapping
     List<ProducerDto> findAll() {
         return producerService.getAllProducers();
+    }
+
+    @PostMapping
+    ResponseEntity<ProducerDto> saveProducer(@RequestBody ProducerDto producerDto) {
+        ProducerDto savedProducer = producerService.saveProducer(producerDto);
+        URI savedProducerUri = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("{id}")
+                .buildAndExpand(savedProducer.id())
+                .toUri();
+        return ResponseEntity.created(savedProducerUri).body(savedProducer);
     }
 }
