@@ -39,5 +39,10 @@ public class BeerStyleController {
         return ResponseEntity.created(savedBeerStyleUri).body(savedBeerStyle);
     }
 
-
+    @PutMapping("/{id}")
+    ResponseEntity<?> replaceBeerStyle(@PathVariable Long id, @RequestBody BeerStyleDto beerStyleDto) {
+        return beerStyleService.replaceBeerStyle(id, beerStyleDto)
+                .map(c -> ResponseEntity.noContent().build())
+                .orElse(ResponseEntity.notFound().build());
+    }
 }

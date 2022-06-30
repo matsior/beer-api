@@ -33,4 +33,13 @@ public class BeerStyleService {
         BeerStyle savedBeerStyle = beerStyleRepository.save(beerStyle);
         return beerStyleMapper.map(savedBeerStyle);
     }
+
+    public Optional<BeerStyleDto> replaceBeerStyle(Long id, BeerStyleDto beerStyleDto) {
+        if (!beerStyleRepository.existsById(id)) {
+            return Optional.empty();
+        }
+        BeerStyle beerStyleToUpdate = beerStyleMapper.map(id, beerStyleDto);
+        BeerStyle updatedEntity = beerStyleRepository.save(beerStyleToUpdate);
+        return Optional.of(beerStyleMapper.map(updatedEntity));
+    }
 }

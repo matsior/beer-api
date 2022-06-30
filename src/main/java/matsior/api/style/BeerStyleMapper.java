@@ -11,4 +11,12 @@ public class BeerStyleMapper {
                 beer.getName(),
                 beer.getDescription());
     }
+
+    public BeerStyle map(Long id, BeerStyleDto beerStyleDto) {
+        return new BeerStyle(
+                id,
+                beerStyleDto.name(),
+                beerStyleDto.description()
+        );
+    }
 }

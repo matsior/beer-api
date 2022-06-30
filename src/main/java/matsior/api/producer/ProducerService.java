@@ -1,8 +1,6 @@
 package matsior.api.producer;
 
 import lombok.RequiredArgsConstructor;
-import matsior.api.beer.Beer;
-import matsior.api.beer.dto.BeerSaveRequestDto;
 import matsior.api.producer.dto.ProducerDto;
 import org.springframework.stereotype.Service;
 
