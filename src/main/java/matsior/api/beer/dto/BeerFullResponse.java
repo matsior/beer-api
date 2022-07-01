@@ -1,9 +1,6 @@
 package matsior.api.beer.dto;
 
-import matsior.api.producer.Producer;
-import matsior.api.style.BeerStyle;
-
-public record BeerDto(
+public record BeerFullResponse(
         Long id,
         String name,
         String producerName,

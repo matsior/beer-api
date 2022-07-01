@@ -1,9 +1,9 @@
 package matsior.api.beer;
 
 import lombok.RequiredArgsConstructor;
-import matsior.api.beer.dto.BeerDto;
-import matsior.api.beer.dto.BeerSaveRequestDto;
-import matsior.api.beer.dto.BeerSimpleRequest;
+import matsior.api.beer.dto.BeerFullResponse;
+import matsior.api.beer.dto.BeerSaveRequest;
+import matsior.api.beer.dto.BeerSimpleResponse;
 import matsior.api.producer.ProducerRepository;
 import matsior.api.style.BeerStyleRepository;
 import org.springframework.stereotype.Service;
@@ -15,8 +15,8 @@ public class BeerMapper {
     private final BeerStyleRepository beerStyleRepository;
     private final ProducerRepository producerRepository;
 
-    public BeerDto map(Beer beer) {
-        return new BeerDto(
+    public BeerFullResponse map(Beer beer) {
+        return new BeerFullResponse(
                 beer.getId(),
                 beer.getName(),
                 beer.getProducer().getName(),
@@ -27,21 +27,21 @@ public class BeerMapper {
                 beer.getBeerStyle().getName());
     }
 
-    public Beer map(BeerSaveRequestDto beerSaveRequestDto) {
+    public Beer map(BeerSaveRequest beerSaveRequest) {
         return new Beer(
                 EMPTY_ID,
-                beerSaveRequestDto.name(),
-                producerRepository.findById(beerSaveRequestDto.producerId()).get(),
-                beerSaveRequestDto.description(),
-                beerSaveRequestDto.country(),
-                beerSaveRequestDto.alcohol(),
-                beerSaveRequestDto.blg(),
-                beerStyleRepository.findById(beerSaveRequestDto.beerStyleId()).get()
+                beerSaveRequest.name(),
+                producerRepository.findById(beerSaveRequest.producerId()).get(),
+                beerSaveRequest.description(),
+                beerSaveRequest.country(),
+                beerSaveRequest.alcohol(),
+                beerSaveRequest.blg(),
+                beerStyleRepository.findById(beerSaveRequest.beerStyleId()).get()
         );
     }
 
-    public BeerSaveRequestDto mapToSaveRequest(Beer savedBeer) {
-        return new BeerSaveRequestDto(
+    public BeerSaveRequest mapToSaveRequest(Beer savedBeer) {
+        return new BeerSaveRequest(
                 savedBeer.getId(),
                 savedBeer.getName(),
                 savedBeer.getProducer().getId(),
@@ -53,7 +53,7 @@ public class BeerMapper {
         );
     }
 
-    public BeerSimpleRequest mapToSimple(Beer beer) {
-        return new BeerSimpleRequest(beer.getId(), beer.getName());
+    public BeerSimpleResponse mapToSimple(Beer beer) {
+        return new BeerSimpleResponse(beer.getId(), beer.getName());
     }
 }

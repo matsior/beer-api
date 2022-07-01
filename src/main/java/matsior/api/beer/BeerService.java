@@ -1,9 +1,9 @@
 package matsior.api.beer;
 
 import lombok.RequiredArgsConstructor;
-import matsior.api.beer.dto.BeerDto;
-import matsior.api.beer.dto.BeerSaveRequestDto;
-import matsior.api.beer.dto.BeerSimpleRequest;
+import matsior.api.beer.dto.BeerFullResponse;
+import matsior.api.beer.dto.BeerSaveRequest;
+import matsior.api.beer.dto.BeerSimpleResponse;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -16,34 +16,34 @@ public class BeerService {
     private final BeerRepository beerRepository;
     private final BeerMapper beerMapper;
 
-    public List<BeerDto> findAllBeers() {
+    public List<BeerFullResponse> findAllBeers() {
         return beerRepository.findAll()
                 .stream()
                 .map(beerMapper::map)
                 .toList();
     }
 
-    public List<BeerSimpleRequest> findAllBeersSimple() {
+    public List<BeerSimpleResponse> findAllBeersSimple() {
         return beerRepository.findAll()
                 .stream()
                 .map(beerMapper::mapToSimple)
                 .toList();
     }
 
-    public List<BeerDto> findAllBeersWithParameters(String country, double alcohol, String sortBy) {
+    public List<BeerFullResponse> findAllBeersWithParameters(String country, double alcohol, String sortBy) {
         return beerRepository.findAllByCountryContainsIgnoreCaseAndAlcoholGreaterThanEqual(country, alcohol, Sort.by(sortBy))
                 .stream()
                 .map(beerMapper::map)
                 .toList();
     }
 
-    public Optional<BeerDto> findBeerById(long id) {
+    public Optional<BeerFullResponse> findBeerById(long id) {
         return beerRepository.findById(id)
                 .map(beerMapper::map);
     }
 
-    public BeerSaveRequestDto saveBeer(BeerSaveRequestDto beerSaveRequestDto) {
-        Beer beerToSave = beerMapper.map(beerSaveRequestDto);
+    public BeerSaveRequest saveBeer(BeerSaveRequest beerSaveRequest) {
+        Beer beerToSave = beerMapper.map(beerSaveRequest);
         Beer savedBeer = beerRepository.save(beerToSave);
         return beerMapper.mapToSaveRequest(savedBeer);
     }
