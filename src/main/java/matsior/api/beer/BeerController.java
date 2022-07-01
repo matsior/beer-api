@@ -37,6 +37,8 @@ public class BeerController {
         return beerService.findAllBeersWithParameters(country, alc, sort);
     }
 
+    // TODO add api/beers/simple mapping and SimpleBeerDto
+
     @GetMapping("/{id}")
     ResponseEntity<BeerDto> findBeerById(@PathVariable("id") Long id) {
         return beerService.findBeerById(id)
@@ -53,6 +55,10 @@ public class BeerController {
                 .toUri();
         return ResponseEntity.created(savedBeerUri).body(savedBeer);
     }
+
+    // TODO add put mapping
+
+    // TODO add patch mapping
 
     @DeleteMapping("/{id}")
     ResponseEntity<?> deleteBeer(@PathVariable Long id) {

@@ -46,6 +46,8 @@ public class BeerStyleController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    // TODO add patch mapping
+
     @DeleteMapping("/{id}")
     ResponseEntity<?> deleteBeerStyle(@PathVariable Long id) {
         beerStyleService.deleteBeerStyle(id);
