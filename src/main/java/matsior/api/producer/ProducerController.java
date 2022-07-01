@@ -44,4 +44,10 @@ public class ProducerController {
                 .map(p -> ResponseEntity.noContent().build())
                 .orElse(ResponseEntity.notFound().build());
     }
+
+    @DeleteMapping("/{id}")
+    ResponseEntity<?> deleteProducer(@PathVariable Long id) {
+        producerService.deleteProducer(id);
+        return ResponseEntity.noContent().build();
+    }
 }

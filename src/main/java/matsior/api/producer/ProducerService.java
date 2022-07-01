@@ -44,6 +44,10 @@ public class ProducerService {
                 .map(producerMapper::map);
     }
 
+    public void deleteProducer(Long id) {
+        producerRepository.deleteById(id);
+    }
+
     private Producer setEntityFields(ProducerDto source, Producer target) {
         if (source.name() != null) {
             target.setName(source.name());
