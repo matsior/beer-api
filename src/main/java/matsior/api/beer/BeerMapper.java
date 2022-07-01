@@ -3,6 +3,7 @@ package matsior.api.beer;
 import lombok.RequiredArgsConstructor;
 import matsior.api.beer.dto.BeerDto;
 import matsior.api.beer.dto.BeerSaveRequestDto;
+import matsior.api.beer.dto.BeerSimpleRequest;
 import matsior.api.producer.ProducerRepository;
 import matsior.api.style.BeerStyleRepository;
 import org.springframework.stereotype.Service;
@@ -50,5 +51,9 @@ public class BeerMapper {
                 savedBeer.getBlg(),
                 savedBeer.getBeerStyle().getId()
         );
+    }
+
+    public BeerSimpleRequest mapToSimple(Beer beer) {
+        return new BeerSimpleRequest(beer.getId(), beer.getName());
     }
 }

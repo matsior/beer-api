@@ -3,6 +3,7 @@ package matsior.api.beer;
 import lombok.RequiredArgsConstructor;
 import matsior.api.beer.dto.BeerDto;
 import matsior.api.beer.dto.BeerSaveRequestDto;
+import matsior.api.beer.dto.BeerSimpleRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,13 @@ public class BeerService {
         return beerRepository.findAll()
                 .stream()
                 .map(beerMapper::map)
+                .toList();
+    }
+
+    public List<BeerSimpleRequest> findAllBeersSimple() {
+        return beerRepository.findAll()
+                .stream()
+                .map(beerMapper::mapToSimple)
                 .toList();
     }
 

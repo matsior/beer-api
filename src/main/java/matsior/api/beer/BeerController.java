@@ -2,6 +2,7 @@ package matsior.api.beer;
 
 import matsior.api.beer.dto.BeerDto;
 import matsior.api.beer.dto.BeerSaveRequestDto;
+import matsior.api.beer.dto.BeerSimpleRequest;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +38,10 @@ public class BeerController {
         return beerService.findAllBeersWithParameters(country, alc, sort);
     }
 
-    // TODO add api/beers/simple mapping and SimpleBeerDto
+    @GetMapping("/simple")
+    List<BeerSimpleRequest> getSimpleInfo() {
+        return beerService.findAllBeersSimple();
+    }
 
     @GetMapping("/{id}")
     ResponseEntity<BeerDto> findBeerById(@PathVariable("id") Long id) {
