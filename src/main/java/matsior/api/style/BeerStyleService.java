@@ -42,4 +42,8 @@ public class BeerStyleService {
         BeerStyle updatedEntity = beerStyleRepository.save(beerStyleToUpdate);
         return Optional.of(beerStyleMapper.map(updatedEntity));
     }
+
+    public void deleteBeerStyle(Long id) {
+        beerStyleRepository.deleteById(id);
+    }
 }

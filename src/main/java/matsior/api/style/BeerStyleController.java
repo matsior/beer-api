@@ -45,4 +45,10 @@ public class BeerStyleController {
                 .map(c -> ResponseEntity.noContent().build())
                 .orElse(ResponseEntity.notFound().build());
     }
+
+    @DeleteMapping("/{id}")
+    ResponseEntity<?> deleteBeerStyle(@PathVariable Long id) {
+        beerStyleService.deleteBeerStyle(id);
+        return ResponseEntity.noContent().build();
+    }
 }
