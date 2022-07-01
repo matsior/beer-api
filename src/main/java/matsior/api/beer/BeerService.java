@@ -39,4 +39,8 @@ public class BeerService {
         Beer savedBeer = beerRepository.save(beerToSave);
         return beerMapper.mapToSaveRequest(savedBeer);
     }
+
+    public void deleteBeer(Long id) {
+        beerRepository.deleteById(id);
+    }
 }

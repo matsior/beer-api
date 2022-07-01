@@ -53,4 +53,10 @@ public class BeerController {
                 .toUri();
         return ResponseEntity.created(savedBeerUri).body(savedBeer);
     }
+
+    @DeleteMapping("/{id}")
+    ResponseEntity<?> deleteBeer(@PathVariable Long id) {
+        beerService.deleteBeer(id);
+        return ResponseEntity.noContent().build();
+    }
 }
