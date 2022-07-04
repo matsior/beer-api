@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
+    <changeSet id="0003_create_beer_table" author="matsior">
+        <createTable tableName="beer">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="varchar(2048)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="producer_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="country" type="varchar(100)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="alcohol" type="double">
+                <constraints nullable="true"/>
+            </column>
+            <column name="blg" type="double">
+                <constraints nullable="true"/>
+            </column>
+            <column name="beer_style_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="beer"
+                                 baseColumnNames="producer_id"
+                                 constraintName="fk_beer_producer_id"
+                                 referencedTableName="producer"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="beer"
+                                 baseColumnNames="beer_style_id"
+                                 constraintName="fk_beer_beer_style_id"
+                                 referencedTableName="beer_style"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+</databaseChangeLog>

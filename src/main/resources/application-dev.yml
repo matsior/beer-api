@@ -9,5 +9,7 @@ spring:
     init:
       data-locations:
         classpath:db/testdata/test_beer_styles.sql, 
-        classpath:db/testdata/test_producers.sql, 
+        classpath:db/testdata/test_producers.sql,
         classpath:db/testdata/test_beers.sql
+  datasource:
+    url: jdbc:h2:mem:test

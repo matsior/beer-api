@@ -1,6 +1,4 @@
 spring:
-  datasource:
-    url: jdbc:h2:mem:test
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
