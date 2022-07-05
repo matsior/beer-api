@@ -13,3 +13,8 @@ public class BeerApiApplication {
         SpringApplication.run(BeerApiApplication.class, args);
     }
 }
+
+// TODO package private repositories
+// TODO write tests
+// TODO add validation
+// TODO add ControllerAdvice
