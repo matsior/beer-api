@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
@@ -22,7 +23,7 @@ class ProducerController {
     }
 
     @PostMapping
-    ResponseEntity<ProducerDto> saveProducer(@RequestBody ProducerDto producerDto) {
+    ResponseEntity<ProducerDto> saveProducer(@Valid @RequestBody ProducerDto producerDto) {
         ProducerDto savedProducer = producerService.saveProducer(producerDto);
         URI savedProducerUri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("{id}")
