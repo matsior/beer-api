@@ -21,7 +21,7 @@ import java.util.List;
                 MediaType.APPLICATION_XML_VALUE
         }
 )
-public class BeerController {
+class BeerController {
 
     private final BeerService beerService;
 

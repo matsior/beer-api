@@ -4,7 +4,7 @@ import matsior.api.style.dto.BeerStyleDto;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BeerStyleMapper {
+class BeerStyleMapper {
     public BeerStyleDto map(BeerStyle beer) {
         return new BeerStyleDto(
                 beer.getId(),

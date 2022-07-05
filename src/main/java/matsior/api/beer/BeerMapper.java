@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class BeerMapper {
+class BeerMapper {
     private static final Long EMPTY_ID = null;
     private final BeerStyleRepository beerStyleRepository;
     private final ProducerRepository producerRepository;

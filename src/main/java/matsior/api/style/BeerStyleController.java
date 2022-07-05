@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/styles")
-public class BeerStyleController {
+class BeerStyleController {
     private final BeerStyleService beerStyleService;
 
     public BeerStyleController(BeerStyleService beerStyleService) {

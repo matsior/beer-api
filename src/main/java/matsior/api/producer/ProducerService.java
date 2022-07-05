@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class ProducerService {
+class ProducerService {
 
     private final ProducerRepository producerRepository;
     private final ProducerMapper producerMapper;

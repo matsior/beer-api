@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class BeerStyleService {
+class BeerStyleService {
     private final BeerStyleRepository beerStyleRepository;
     private final BeerStyleMapper beerStyleMapper;
 

@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/producers")
 @RequiredArgsConstructor
-public class ProducerController {
+class ProducerController {
 
     private final ProducerService producerService;
 

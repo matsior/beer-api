@@ -4,7 +4,7 @@ import matsior.api.producer.dto.ProducerDto;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ProducerMapper {
+class ProducerMapper {
     public ProducerDto map(Producer producer) {
         return new ProducerDto(
                 producer.getId(),
