@@ -10,7 +10,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/producers")
+@RequestMapping("/producers")
 @RequiredArgsConstructor
 public class ProducerController {
 

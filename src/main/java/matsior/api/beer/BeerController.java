@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(
-        path = "/api/beers",
+        path = "/beers",
         produces = {
                 MediaType.APPLICATION_JSON_VALUE,
                 MediaType.APPLICATION_XML_VALUE
