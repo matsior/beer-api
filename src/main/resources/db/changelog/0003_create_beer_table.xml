@@ -6,28 +6,31 @@
         https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
     <changeSet id="0003_create_beer_table" author="matsior">
         <createTable tableName="beer">
-            <column name="id" type="bigint" autoIncrement="true">
+            <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="name" type="varchar(100)">
+            <column name="name" type="VARCHAR(100)">
                 <constraints nullable="false"/>
             </column>
-            <column name="description" type="varchar(2048)">
+            <column name="description" type="VARCHAR(2048)">
                 <constraints nullable="true"/>
             </column>
-            <column name="producer_id" type="bigint">
+            <column name="producer_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
-            <column name="country" type="varchar(100)">
+            <column name="country" type="VARCHAR(100)">
                 <constraints nullable="true"/>
             </column>
-            <column name="alcohol" type="double">
+            <column name="alcohol" type="DOUBLE">
                 <constraints nullable="true"/>
             </column>
-            <column name="blg" type="double">
+            <column name="blg" type="DOUBLE">
                 <constraints nullable="true"/>
             </column>
-            <column name="beer_style_id" type="bigint">
+            <column name="beer_style_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_added" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
         </createTable>

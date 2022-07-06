@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 class BeerMapper {
-    private static final Long EMPTY_ID = null;
     private final BeerStyleRepository beerStyleRepository;
     private final ProducerRepository producerRepository;
 
@@ -29,7 +28,6 @@ class BeerMapper {
 
     public Beer map(BeerSaveRequest beerSaveRequest) {
         return new Beer(
-                EMPTY_ID,
                 beerSaveRequest.name(),
                 producerRepository.findById(beerSaveRequest.producerId()).get(),
                 beerSaveRequest.description(),
