@@ -6,7 +6,7 @@ import javax.validation.constraints.Size;
 
 public record BeerSaveRequest(
         Long id,
-        @NotNull @Size(min = 2, max = 50)
+        @NotNull @Size(min = 2, max = 50, message = "name must be between 2 and 50 characters")
         String name,
         @NotNull @Min(0)
         Long producerId,

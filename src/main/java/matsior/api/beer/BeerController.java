@@ -43,7 +43,7 @@ class BeerController {
         return beerService.findAllBeersSimple();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id:[0-9]*}")
     ResponseEntity<BeerFullResponse> findBeerById(@PathVariable("id") Long id) {
         return beerService.findBeerById(id)
                 .map(ResponseEntity::ok)
@@ -64,7 +64,7 @@ class BeerController {
 
     // TODO add patch mapping
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id:[0-9]*}")
     ResponseEntity<?> deleteBeer(@PathVariable Long id) {
         beerService.deleteBeer(id);
         return ResponseEntity.noContent().build();
