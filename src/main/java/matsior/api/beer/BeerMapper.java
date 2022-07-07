@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-class BeerMapper {
+public class BeerMapper {
     private final BeerStyleRepository beerStyleRepository;
     private final ProducerRepository producerRepository;
 
@@ -23,7 +23,8 @@ class BeerMapper {
                 beer.getCountry(),
                 beer.getAlcohol(),
                 beer.getBlg(),
-                beer.getBeerStyle().getName());
+                beer.getBeerStyle().getName(),
+                beer.getDateAdded());
     }
 
     public Beer map(BeerSaveRequest beerSaveRequest) {

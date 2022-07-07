@@ -5,7 +5,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 import java.util.List;
 
-interface BeerRepository extends PagingAndSortingRepository<Beer, Long> {
+public interface BeerRepository extends PagingAndSortingRepository<Beer, Long> {
     List<Beer> findAll();
     List<Beer> findAll(Sort sort);
     List<Beer> findAllByCountryIgnoreCase(String country);

@@ -1,5 +1,7 @@
 package matsior.api.beer.dto;
 
+import java.time.Instant;
+
 public record BeerFullResponse(
         Long id,
         String name,
@@ -8,6 +10,6 @@ public record BeerFullResponse(
         String country,
         Double alcohol,
         Double blg,
-        String beerStyleName
-) {
-}
+        String beerStyleName,
+        Instant dateAdded
+) { }
