@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import matsior.api.beer.dto.BeerFullResponse;
 import matsior.api.beer.dto.BeerSaveRequest;
 import matsior.api.beer.dto.BeerSimpleResponse;
+import matsior.api.exception.BeerNameTakenException;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -43,6 +44,10 @@ class BeerService {
     }
 
     public BeerSaveRequest saveBeer(BeerSaveRequest beerSaveRequest) {
+        beerRepository.findByName(beerSaveRequest.name()).ifPresent(beer -> {
+                    throw new BeerNameTakenException(beerSaveRequest.name());
+                });
+
         Beer beerToSave = beerMapper.map(beerSaveRequest);
         Beer savedBeer = beerRepository.save(beerToSave);
         return beerMapper.mapToSaveRequest(savedBeer);
