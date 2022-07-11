@@ -15,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 class ProducerController {
 
-    private final ProducerService producerService;
+    private final ProducerServiceImpl producerService;
 
     @GetMapping
     List<ProducerDto> findAll() {

@@ -11,9 +11,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/styles")
 class BeerStyleController {
-    private final BeerStyleService beerStyleService;
+    private final BeerStyleServiceImpl beerStyleService;
 
-    public BeerStyleController(BeerStyleService beerStyleService) {
+    public BeerStyleController(BeerStyleServiceImpl beerStyleService) {
         this.beerStyleService = beerStyleService;
     }
 

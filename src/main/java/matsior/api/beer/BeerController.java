@@ -23,9 +23,9 @@ import java.util.List;
 )
 class BeerController {
 
-    private final BeerService beerService;
+    private final BeerServiceImpl beerService;
 
-    public BeerController(BeerService beerService) {
+    public BeerController(BeerServiceImpl beerService) {
         this.beerService = beerService;
     }
 
