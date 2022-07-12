@@ -9,7 +9,7 @@ import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
-public class StaticticsController {
+class StaticticsController {
 
     private final StatisticsService statisticsService;
 

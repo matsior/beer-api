@@ -11,7 +11,7 @@ import java.util.*;
 
 @Service
 @RequiredArgsConstructor
-public class StatisticsService {
+class StatisticsService {
 
     private final BeerRepository beerRepository;
     private final BeerMapper beerMapper;
