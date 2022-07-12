@@ -1,5 +1,6 @@
 package matsior.api.beer;
 
+import io.swagger.v3.oas.annotations.Operation;
 import matsior.api.beer.dto.BeerFullResponse;
 import matsior.api.beer.dto.BeerSaveRequest;
 import matsior.api.beer.dto.BeerSimpleResponse;
@@ -38,6 +39,7 @@ class BeerController {
         return beerService.findAllBeersWithParameters(country, alc, sort);
     }
 
+    @Operation(summary = "Get simplified beer list")
     @GetMapping("/simple")
     List<BeerSimpleResponse> getSimpleInfo() {
         return beerService.findAllBeersSimple();
