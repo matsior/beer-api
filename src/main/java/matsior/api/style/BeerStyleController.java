@@ -42,14 +42,14 @@ class BeerStyleController {
     @PutMapping("/{id}")
     ResponseEntity<?> replaceBeerStyle(@PathVariable Long id, @RequestBody BeerStyleDto beerStyleDto) {
         return beerStyleService.replaceBeerStyle(id, beerStyleDto)
-                .map(c -> ResponseEntity.noContent().build())
+                .map(beerStyle -> ResponseEntity.noContent().build())
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PatchMapping("/{id}")
     ResponseEntity<?> updateBeerStyle(@PathVariable Long id, @RequestBody BeerStyleDto beerStyleDto) {
         return beerStyleService.updateBeerStyle(id, beerStyleDto)
-                .map(b -> ResponseEntity.noContent().build())
+                .map(beerStyle -> ResponseEntity.noContent().build())
                 .orElse(ResponseEntity.notFound().build());
     }
 
