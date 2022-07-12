@@ -11,7 +11,7 @@ public record BeerSaveRequest(
         @NotNull @Min(0)
         Long producerId,
         String description,
-        @Size(min = 2, max = 100)
+        @Size(min = 2, max = 100, message = "description must be at least 2 signs")
         String country,
         @Min(0)
         Double alcohol,
