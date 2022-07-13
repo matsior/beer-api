@@ -1,4 +1,4 @@
-# tutoring-platform
+# Beer Api
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
