@@ -33,14 +33,14 @@ class ProducerController {
     }
 
     @PutMapping("/{id}")
-    ResponseEntity<?> replaceProducer(@PathVariable Long id, @RequestBody ProducerDto producerDto) {
+    ResponseEntity<?> replaceProducer(@PathVariable Long id,@Valid @RequestBody ProducerDto producerDto) {
         return producerService.replaceProducer(id, producerDto)
                 .map(producer -> ResponseEntity.noContent().build())
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PatchMapping("/{id}")
-    ResponseEntity<?> updateProducer(@PathVariable Long id, @RequestBody ProducerDto producerDto) {
+    ResponseEntity<?> updateProducer(@PathVariable Long id, @Valid @RequestBody ProducerDto producerDto) {
         return producerService.updateProducer(id, producerDto)
                 .map(producer -> ResponseEntity.noContent().build())
                 .orElse(ResponseEntity.notFound().build());

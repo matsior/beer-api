@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import matsior.api.beer.dto.BeerFullResponse;
 import matsior.api.beer.dto.BeerSaveRequest;
 import matsior.api.beer.dto.BeerSimpleResponse;
-import matsior.api.exception.BeerNameTakenException;
+import matsior.api.exceptionhandling.exception.BeerNameTakenException;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 

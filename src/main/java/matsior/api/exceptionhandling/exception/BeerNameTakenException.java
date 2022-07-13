@@ -1,4 +1,4 @@
-package matsior.api.exception;
+package matsior.api.exceptionhandling.exception;
 
 public class BeerNameTakenException extends RuntimeException {
     public BeerNameTakenException(String beerName) {

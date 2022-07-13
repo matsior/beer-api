@@ -5,8 +5,10 @@ import javax.validation.constraints.Size;
 
 public record ProducerDto (
         Long id,
+
         @NotNull @Size(min = 2, max = 100)
         String name,
-        @Size(min = 5, max = 2048)
+
+//        @Size(max = 2048)
         String description
 ) { }

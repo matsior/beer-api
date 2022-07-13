@@ -21,8 +21,10 @@ public class Producer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull
+
+    @NotNull @Size(min = 2, max = 100)
     private String name;
-    @Size(min = 5, max = 2048)
+
+    @Size(min = 5, max = 2048, message = "must be between 5 and 2048 chars")
     private String description;
 }

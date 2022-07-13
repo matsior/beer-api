@@ -27,7 +27,7 @@ public class Beer {
     private Long id;
 
     @NotBlank(message = "Name can not be empty")
-    @NotNull(message = "Beer must have Name")
+    @NotNull(message = "Beer must have name")
     @Size(min = 2, max = 50)
     private String name;
 
