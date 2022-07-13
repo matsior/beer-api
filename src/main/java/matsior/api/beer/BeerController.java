@@ -30,6 +30,7 @@ class BeerController {
         this.beerService = beerService;
     }
 
+    @Operation(summary = "Get Beer list")
     @GetMapping
     List<BeerFullResponse> getAllBeers(
             @RequestParam(defaultValue = "") String country,
@@ -39,12 +40,13 @@ class BeerController {
         return beerService.findAllBeersWithParameters(country, alc, sort);
     }
 
-    @Operation(summary = "Get simplified beer list")
+    @Operation(summary = "Get simplified Beer list")
     @GetMapping("/simple")
     List<BeerSimpleResponse> getSimpleInfo() {
         return beerService.findAllBeersSimple();
     }
 
+    @Operation(summary = "Get single Beer by Id")
     @GetMapping("/{id:[0-9]*}")
     ResponseEntity<BeerFullResponse> findBeerById(@PathVariable("id") Long id) {
         return beerService.findBeerById(id)
@@ -52,6 +54,7 @@ class BeerController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @Operation(summary = "Add new Beer")
     @PostMapping
     ResponseEntity<BeerSaveRequest> saveBeer(@Valid @RequestBody BeerSaveRequest beerSaveRequest) {
         BeerSaveRequest savedBeer = beerService.saveBeer(beerSaveRequest);
@@ -66,6 +69,7 @@ class BeerController {
 
     // TODO add patch mapping
 
+    @Operation(summary = "Delete Beer by Id")
     @DeleteMapping("/{id:[0-9]*}")
     ResponseEntity<?> deleteBeer(@PathVariable Long id) {
         beerService.deleteBeer(id);
