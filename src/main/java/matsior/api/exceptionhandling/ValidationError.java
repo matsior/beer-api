@@ -1,6 +1,6 @@
 package matsior.api.exceptionhandling;
 
-public record ValidationError(
+record ValidationError(
         String field,
         String message
 ) { }
