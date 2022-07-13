@@ -11,14 +11,10 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import javax.validation.ConstraintViolationException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @ControllerAdvice
 class ControllerAdvisor extends ResponseEntityExceptionHandler {
-
-    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
 
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(
@@ -28,7 +24,6 @@ class ControllerAdvisor extends ResponseEntityExceptionHandler {
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
                 .body(new ExceptionMessage(
-                        LocalDateTime.now().format(DATE_TIME_FORMATTER),
                         HttpStatus.BAD_REQUEST.toString(),
                         getValidationErrors(ex)
                 ));
@@ -39,7 +34,6 @@ class ControllerAdvisor extends ResponseEntityExceptionHandler {
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
                 .body(new ExceptionMessage(
-                        LocalDateTime.now().format(DATE_TIME_FORMATTER),
                         HttpStatus.BAD_REQUEST.toString(),
                         getValidationErrors(ex)
                 ));
@@ -50,7 +44,6 @@ class ControllerAdvisor extends ResponseEntityExceptionHandler {
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
                 .body(new ExceptionMessage(
-                        LocalDateTime.now().format(DATE_TIME_FORMATTER),
                         HttpStatus.BAD_REQUEST.toString(),
                         ex.getMessage()
                 ));
