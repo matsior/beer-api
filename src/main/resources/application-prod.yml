@@ -4,6 +4,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
+    defer-datasource-initialization: off
   datasource:
     url: jdbc:mysql://localhost:3306/beer_api
     username: root
