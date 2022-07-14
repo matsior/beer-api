@@ -34,6 +34,18 @@ To setup and run this project:
 2. Build project with maven.
 3. After running application Swagger documentation available at: http://localhost:8080/api/swagger-ui/index.html
 
+## Exploring Beer Api
+Available endpoints and CRUD operations:
+<details><summary>Beer</summary>
+...
+</details>
+<details><summary>Beer Producers</summary>
+...
+</details>
+<details><summary>Beer Styles</summary>
+...
+</details>
+
 ## Roadmap
 - [ ] Implement core functionalities
 - [ ] Expand database model (add User entity)
