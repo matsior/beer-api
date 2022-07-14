@@ -37,13 +37,13 @@ To setup and run this project:
 
 ## Exploring Beer Api
 Available endpoints and CRUD operations (click to see details):
-<details><summary>Beer</summary>
+<details><summary><b>Beer:</b></summary>
 ...
 </details>
-<details><summary>Beer Producers</summary>
+<details><summary><b>Beer Producers:</b></summary>
 ...
 </details>
-<details><summary>Beer Styles</summary>
+<details><summary><b>Beer Styles:</b></summary>
 ...
 </details>
 
