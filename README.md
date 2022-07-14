@@ -10,6 +10,7 @@
 * [About The Project](#about-the-project)
 * [Technologies](#technologies)
 * [Getting Started](#getting-started)
+* [Exploring Beer Api](#exploring-beer-api)
 * [Roadmap](#roadmap)
 * [Contributing](#contributing)
 * [License](#license)
@@ -35,7 +36,7 @@ To setup and run this project:
 3. After running application Swagger documentation available at: http://localhost:8080/api/swagger-ui/index.html
 
 ## Exploring Beer Api
-Available endpoints and CRUD operations:
+Available endpoints and CRUD operations (click to see details):
 <details><summary>Beer</summary>
 ...
 </details>
