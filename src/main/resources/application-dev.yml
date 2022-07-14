@@ -1,6 +1,8 @@
 spring:
   liquibase:
     change-log: classpath:db/changelog/master-dev.xml
+    enabled: true
+    drop-first: true
   jpa:
     defer-datasource-initialization: false
     hibernate:
