@@ -30,6 +30,7 @@ Api providing beers, beer styles and beer producers informations.
 To setup and run this project:
 1. Clone repository.
 2. Build project with maven.
+3. After running application Swagger documentation available at: http://localhost:8080/api/swagger-ui/index.html
 
 ## Roadmap
 - [ ] Implement core functionalities
