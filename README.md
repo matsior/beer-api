@@ -18,10 +18,12 @@
 Api providing beers, beer styles and beer producers informations.
 
 ## Technologies
-* Java
-* SpringBoot
+* Java 17
+* SpringBoot 2.7.0
 * Maven
-* H2 
+* H2 Database
+* MySQL
+* Liquibase
 * Lombok
 * Swagger
 * Git
@@ -34,8 +36,11 @@ To setup and run this project:
 
 ## Roadmap
 - [ ] Implement core functionalities
-- [ ] Expand database model
+- [ ] Expand database model (add User entity)
 - [ ] Create documentation
+- [ ] Add Spring Security
+- [ ] Write unit tests
+- [ ] Deploy application on Heroku
 
 ## Contributing
 Coming soon...
