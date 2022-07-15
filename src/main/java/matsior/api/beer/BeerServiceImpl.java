@@ -5,7 +5,6 @@ import matsior.api.beer.dto.BeerFullResponse;
 import matsior.api.beer.dto.BeerSaveRequest;
 import matsior.api.beer.dto.BeerSimpleResponse;
 import matsior.api.exceptionhandling.exception.BeerNameTakenException;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +14,6 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 class BeerServiceImpl implements BeerService{
-    public static final int PAGE_SIZE = 10;
-
     private final BeerRepository beerRepository;
     private final BeerMapper beerMapper;
 
@@ -27,8 +24,8 @@ class BeerServiceImpl implements BeerService{
                 .toList();
     }
 
-    public List<BeerSimpleResponse> findAllBeersSimple(int page, Sort.Direction direction, String sortBy) {
-        return beerRepository.findAll(PageRequest.of(page - 1, PAGE_SIZE, Sort.by(direction, sortBy)))
+    public List<BeerSimpleResponse> findAllBeersSimple() {
+        return beerRepository.findAll()
                 .stream()
                 .map(beerMapper::mapToSimple)
                 .toList();

@@ -4,7 +4,6 @@ import io.swagger.v3.oas.annotations.Operation;
 import matsior.api.beer.dto.BeerFullResponse;
 import matsior.api.beer.dto.BeerSaveRequest;
 import matsior.api.beer.dto.BeerSimpleResponse;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -43,10 +42,8 @@ class BeerController {
 
     @Operation(summary = "Get simplified Beer list")
     @GetMapping("/simple")
-    List<BeerSimpleResponse> getSimpleInfo(@RequestParam(defaultValue = "0") int page,
-                                           Sort.Direction direction,
-                                           @RequestParam(defaultValue = "id") String sortBy) {
-        return beerService.findAllBeersSimple(page, direction, sortBy);
+    List<BeerSimpleResponse> getSimpleInfo() {
+        return beerService.findAllBeersSimple();
     }
 
     @Operation(summary = "Get single Beer by Id")
