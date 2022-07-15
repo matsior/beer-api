@@ -38,5 +38,4 @@ class UserController {
                 .toUri();
         return ResponseEntity.created(uri).body(savedUser);
     }
-
 }

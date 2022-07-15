@@ -4,6 +4,9 @@ spring:
       matching-strategy: ant_path_matcher
   jpa:
     show-sql: true
+  jackson:
+    visibility:
+      field: any
 server:
   servlet:
     context-path: "/api"
