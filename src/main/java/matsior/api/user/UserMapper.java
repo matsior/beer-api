@@ -24,4 +24,13 @@ class UserMapper {
                 user.getCreated()
         );
     }
+
+    public User map(Long id, UserSaveRequest userSaveRequest) {
+        return new User(
+                id,
+                userSaveRequest.username(),
+                userSaveRequest.email(),
+                userSaveRequest.password()
+        );
+    }
 }

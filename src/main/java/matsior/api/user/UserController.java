@@ -43,6 +43,16 @@ class UserController {
         return ResponseEntity.created(uri).body(savedUser);
     }
 
+    // FIXME 'created' field is null after replacing User
+    @Operation(summary = "Replacing user by Id")
+    @PutMapping("/{id}")
+    ResponseEntity<?> replaceUser(@PathVariable Long id, @RequestBody UserSaveRequest userSaveRequest) {
+        return userService.replaceUser(id, userSaveRequest)
+                .map(user -> ResponseEntity.noContent().build())
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @Operation(summary = "Delete user by Id")
     @DeleteMapping("/{id}")
     ResponseEntity<?> deleteById(@PathVariable Long id) {
         userService.deleteUser(id);

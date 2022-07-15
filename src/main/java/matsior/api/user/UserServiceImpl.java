@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import matsior.api.user.dto.UserFullResponse;
 import matsior.api.user.dto.UserSaveRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -34,6 +35,16 @@ class UserServiceImpl implements UserService {
         User userToSave = userMapper.map(userSaveRequest);
         User savedUser = userRepository.save(userToSave);
         return userMapper.map(savedUser);
+    }
+
+    @Override
+    public Optional<UserFullResponse> replaceUser(Long id, UserSaveRequest userSaveRequest) {
+        if (!userRepository.existsById(id)) {
+            return Optional.empty();
+        }
+        User userToUpdate = userMapper.map(id, userSaveRequest);
+        User updatedUser = userRepository.save(userToUpdate);
+        return Optional.of(userMapper.map(updatedUser));
     }
 
     @Override
