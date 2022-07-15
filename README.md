@@ -32,7 +32,7 @@ Api providing beers, beer styles and beer producers informations.
 ## Getting started
 To setup and run this project:
 1. Clone repository `git clone https://github.com/matsior/beer-api.git`
-2. Build project with maven.
+2. Build project with maven `mvn spring-boot:run`
 3. After running application Swagger documentation available at: http://localhost:8080/api/swagger-ui/index.html
 
 ## Exploring Beer Api
