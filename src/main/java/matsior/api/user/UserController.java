@@ -1,6 +1,7 @@
 package matsior.api.user;
 
 import lombok.RequiredArgsConstructor;
+import matsior.api.user.dto.UserFullResponse;
 import matsior.api.user.dto.UserSaveRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,23 +18,23 @@ class UserController {
     private final UserService userService;
 
     @GetMapping
-    List<User> getUsers() {
+    List<UserFullResponse> getUsers() {
         return userService.getUsers();
     }
 
     @GetMapping("/{id}")
-    ResponseEntity<User> findUserById(@PathVariable Long id) {
+    ResponseEntity<UserFullResponse> findUserById(@PathVariable Long id) {
         return userService.findUserById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    ResponseEntity<User> saveUser(@RequestBody UserSaveRequest userSaveRequest) {
-        User savedUser = userService.saveUser(userSaveRequest);
+    ResponseEntity<UserFullResponse> saveUser(@RequestBody UserSaveRequest userSaveRequest) {
+        UserFullResponse savedUser = userService.saveUser(userSaveRequest);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
-                .buildAndExpand(savedUser.getId())
+                .buildAndExpand(savedUser.id())
                 .toUri();
         return ResponseEntity.created(uri).body(savedUser);
     }
