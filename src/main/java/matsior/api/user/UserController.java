@@ -1,5 +1,6 @@
 package matsior.api.user;
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import matsior.api.user.dto.UserFullResponse;
 import matsior.api.user.dto.UserSaveRequest;
@@ -17,11 +18,13 @@ class UserController {
 
     private final UserService userService;
 
+    @Operation(summary = "Get list of all users")
     @GetMapping
     List<UserFullResponse> getUsers() {
         return userService.getUsers();
     }
 
+    @Operation(summary = "Get single user by Id")
     @GetMapping("/{id}")
     ResponseEntity<UserFullResponse> findUserById(@PathVariable Long id) {
         return userService.findUserById(id)
@@ -29,6 +32,7 @@ class UserController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @Operation(summary = "Save new user")
     @PostMapping
     ResponseEntity<UserFullResponse> saveUser(@RequestBody UserSaveRequest userSaveRequest) {
         UserFullResponse savedUser = userService.saveUser(userSaveRequest);
@@ -37,5 +41,11 @@ class UserController {
                 .buildAndExpand(savedUser.id())
                 .toUri();
         return ResponseEntity.created(uri).body(savedUser);
+    }
+
+    @DeleteMapping("/{id}")
+    ResponseEntity<?> deleteById(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return ResponseEntity.noContent().build();
     }
 }

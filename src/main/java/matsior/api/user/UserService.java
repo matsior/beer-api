@@ -10,4 +10,5 @@ interface UserService {
     List<UserFullResponse> getUsers();
     Optional<UserFullResponse> findUserById(Long id);
     UserFullResponse saveUser(UserSaveRequest userSaveRequest);
+    void deleteUser(Long id);
 }

@@ -35,4 +35,9 @@ class UserServiceImpl implements UserService {
         User savedUser = userRepository.save(userToSave);
         return userMapper.map(savedUser);
     }
+
+    @Override
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
+    }
 }
