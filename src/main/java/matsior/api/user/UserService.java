@@ -1,9 +1,10 @@
 package matsior.api.user;
 
 import java.util.List;
+import java.util.Optional;
 
-public interface UserService {
+interface UserService {
     List<User> getUsers();
-    User findUserById(Long id);
+    Optional<User> findUserById(Long id);
     User saveUser(User user);
 }

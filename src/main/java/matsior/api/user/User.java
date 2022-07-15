@@ -11,7 +11,7 @@ import java.time.Instant;
 @Getter
 @NoArgsConstructor
 @Table(name = "app_user")
-public class User {
+class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
