@@ -37,16 +37,24 @@ To setup and run this project:
 
 ## Exploring Beer Api
 Available endpoints and CRUD operations (click to see details):
+
 <details><summary><b>Beer:</b></summary>
-...
+
+| Method | Url | Description | Sample Valid Request Body | 
+| ------ | --- | ---------- | --------------------------- |
+| GET   | /api/beers | Get all beers |  |
+| GET   | /api/beers/{id} | Get single beer by Id |  |
+
 </details>
+
 <details><summary><b>Beer Producers:</b></summary>
 ...
 </details>
+
 <details><summary><b>Beer Styles:</b></summary>
 ...
 </details>
-</details>
+
 <details><summary><b>Users:</b></summary>
 ...
 </details>
