@@ -46,6 +46,10 @@ Available endpoints and CRUD operations (click to see details):
 <details><summary><b>Beer Styles:</b></summary>
 ...
 </details>
+</details>
+<details><summary><b>Users:</b></summary>
+...
+</details>
 
 ## Roadmap
 - [ ] Implement core functionalities
