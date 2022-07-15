@@ -1,6 +1,8 @@
 package matsior.api.exceptionhandling;
 
 import matsior.api.exceptionhandling.exception.BeerNameTakenException;
+import matsior.api.exceptionhandling.exception.EmailTakenException;
+import matsior.api.exceptionhandling.exception.UserNameTakenException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,8 +41,12 @@ class ControllerAdvisor extends ResponseEntityExceptionHandler {
                 ));
     }
 
-    @ExceptionHandler(BeerNameTakenException.class)
-    public ResponseEntity<Object> handleBeerNameTakenException(BeerNameTakenException ex) {
+    @ExceptionHandler(value = {
+            BeerNameTakenException.class,
+            EmailTakenException.class,
+            UserNameTakenException.class
+    })
+    public ResponseEntity<Object> handleResourceAlreadyTakenException(Exception ex) {
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
                 .body(new ExceptionMessage(

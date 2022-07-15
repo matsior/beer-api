@@ -1,11 +1,14 @@
 package matsior.api.user;
 
 import lombok.RequiredArgsConstructor;
+import matsior.api.exceptionhandling.exception.EmailTakenException;
+import matsior.api.exceptionhandling.exception.UserNameTakenException;
 import matsior.api.user.dto.UserFullResponse;
 import matsior.api.user.dto.UserSaveRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.naming.NameAlreadyBoundException;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,6 +35,12 @@ class UserServiceImpl implements UserService {
 
     @Override
     public UserFullResponse saveUser(UserSaveRequest userSaveRequest) {
+        if (userRepository.existsByUsername(userSaveRequest.username())) {
+            throw new UserNameTakenException(userSaveRequest.username());
+        }
+        if (userRepository.existsByEmail(userSaveRequest.email())) {
+            throw new EmailTakenException(userSaveRequest.email());
+        }
         User userToSave = userMapper.map(userSaveRequest);
         User savedUser = userRepository.save(userToSave);
         return userMapper.map(savedUser);
