@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
@@ -34,7 +35,7 @@ class UserController {
 
     @Operation(summary = "Save new user")
     @PostMapping
-    ResponseEntity<UserFullResponse> saveUser(@RequestBody UserSaveRequest userSaveRequest) {
+    ResponseEntity<UserFullResponse> saveUser(@Valid @RequestBody UserSaveRequest userSaveRequest) {
         UserFullResponse savedUser = userService.saveUser(userSaveRequest);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
@@ -46,7 +47,7 @@ class UserController {
     // FIXME 'created' field is null after replacing User
     @Operation(summary = "Replacing user by Id")
     @PutMapping("/{id}")
-    ResponseEntity<?> replaceUser(@PathVariable Long id, @RequestBody UserSaveRequest userSaveRequest) {
+    ResponseEntity<?> replaceUser(@PathVariable Long id, @Valid @RequestBody UserSaveRequest userSaveRequest) {
         return userService.replaceUser(id, userSaveRequest)
                 .map(user -> ResponseEntity.noContent().build())
                 .orElse(ResponseEntity.notFound().build());
