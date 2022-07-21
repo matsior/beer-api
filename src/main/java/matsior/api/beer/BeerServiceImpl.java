@@ -5,6 +5,7 @@ import matsior.api.beer.dto.BeerFullResponse;
 import matsior.api.beer.dto.BeerSaveRequest;
 import matsior.api.beer.dto.BeerSimpleResponse;
 import matsior.api.exceptionhandling.exception.BeerNameTakenException;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -41,6 +42,8 @@ class BeerServiceImpl implements BeerService{
                 .toList();
     }
 
+//    @Cacheable(cacheNames = "beers", key = "#id")
+    @Cacheable(cacheNames = "beers")
     public Optional<BeerFullResponse> findBeerById(long id) {
         return beerRepository.findById(id)
                 .map(beerMapper::map);
