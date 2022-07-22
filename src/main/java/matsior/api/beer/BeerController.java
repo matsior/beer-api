@@ -1,6 +1,7 @@
 package matsior.api.beer;
 
 import io.swagger.v3.oas.annotations.Operation;
+import lombok.extern.slf4j.Slf4j;
 import matsior.api.beer.dto.BeerFullResponse;
 import matsior.api.beer.dto.BeerSaveRequest;
 import matsior.api.beer.dto.BeerSimpleResponse;
@@ -23,6 +24,7 @@ import java.util.List;
                 MediaType.APPLICATION_XML_VALUE
         }
 )
+@Slf4j
 class BeerController {
 
     private final BeerServiceImpl beerService;
@@ -65,6 +67,7 @@ class BeerController {
                 .path("/{id}")
                 .buildAndExpand(savedBeer.id())
                 .toUri();
+        log.info("New beer added: [id: {}, name: '{}']", savedBeer.id(), savedBeer.name());
         return ResponseEntity.created(savedBeerUri).body(savedBeer);
     }
 
