@@ -16,10 +16,9 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 class BeerServiceImpl implements BeerService{
-    public static final int PAGE_SIZE = 10;
-
     private final BeerRepository beerRepository;
     private final BeerMapper beerMapper;
+    public static final int PAGE_SIZE = 10;
 
     public List<BeerFullResponse> findAllBeers() {
         return beerRepository.findAll()
@@ -30,12 +29,13 @@ class BeerServiceImpl implements BeerService{
 
     public List<BeerSimpleResponse> findAllBeersSimple(int page, Sort.Direction direction, String sortBy) {
         return beerRepository.findAll(PageRequest.of(page - 1, PAGE_SIZE, Sort.by(direction, sortBy)))
-                .stream()
-                .map(beerMapper::mapToSimple)
-                .toList();
+            .stream()
+            .map(beerMapper::mapToSimple)
+            .toList();
     }
 
-    public List<BeerFullResponse> findAllBeersWithParameters(String country, double alcohol, String sortBy) {
+
+        public List<BeerFullResponse> findAllBeersWithParameters(String country, double alcohol, String sortBy) {
         return beerRepository.findAllByCountryContainsIgnoreCaseAndAlcoholGreaterThanEqual(country, alcohol, Sort.by(sortBy))
                 .stream()
                 .map(beerMapper::map)
