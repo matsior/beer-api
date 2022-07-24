@@ -44,6 +44,7 @@ class BeerServiceImpl implements BeerService{
 
 //    @Cacheable(cacheNames = "beers", key = "#id")
     @Cacheable(cacheNames = "beers")
+    @Override
     public Optional<BeerFullResponse> findBeerById(long id) {
         return beerRepository.findById(id)
                 .map(beerMapper::map);
