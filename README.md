@@ -63,8 +63,10 @@ Available endpoints and CRUD operations (click to see details):
 - [ ] Implement core functionalities
 - [ ] Expand database model (add User entity)
 - [ ] Create documentation
+- [ ] Add cache
 - [ ] Add Spring Security
 - [ ] Write unit tests
+- [ ] Write integration tests
 - [ ] Deploy application on Heroku
 
 ## Contributing
