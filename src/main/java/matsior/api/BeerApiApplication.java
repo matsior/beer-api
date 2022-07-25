@@ -13,7 +13,5 @@ public class BeerApiApplication {
     }
 }
 
-// TODO package private repositories
-// TODO write tests
-// TODO add validation
-// TODO add ControllerAdvice
+// TODO write additional tests
+// TODO add additional validation
