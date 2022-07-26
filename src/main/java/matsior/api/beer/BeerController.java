@@ -48,8 +48,7 @@ class BeerController {
     List<BeerSimpleResponse> getSimpleInfo(@RequestParam(defaultValue = "1") int page,
                                            @RequestParam(defaultValue = "ASC") Sort.Direction direction,
                                            @RequestParam(defaultValue = "id") String sortBy) {
-        return beerService.findAllBeersSimple(page, direction, sortBy);
-    }
+        return beerService.findAllBeersSimple(page, direction, sortBy);}
 
     @Operation(summary = "Get single Beer by Id")
     @GetMapping("/{id:[0-9]*}")
