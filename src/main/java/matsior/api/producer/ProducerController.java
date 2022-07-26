@@ -2,6 +2,7 @@ package matsior.api.producer;
 
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import matsior.api.producer.dto.ProducerDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/producers")
 @RequiredArgsConstructor
+@Slf4j
 class ProducerController {
 
     private final ProducerServiceImpl producerService;
@@ -32,12 +34,14 @@ class ProducerController {
                 .path("{id}")
                 .buildAndExpand(savedProducer.id())
                 .toUri();
+        log.info("New producer added: [id: {}, name: '{}']", savedProducer.id(), savedProducer.name());
         return ResponseEntity.created(savedProducerUri).body(savedProducer);
     }
 
     @Operation(summary = "Replace existing producer by Id")
     @PutMapping("/{id}")
     ResponseEntity<?> replaceProducer(@PathVariable Long id,@Valid @RequestBody ProducerDto producerDto) {
+        log.info("Replacing producer with Id: {}", id);
         return producerService.replaceProducer(id, producerDto)
                 .map(producer -> ResponseEntity.noContent().build())
                 .orElse(ResponseEntity.notFound().build());
@@ -46,6 +50,7 @@ class ProducerController {
     @Operation(summary = "Partially update producer by Id")
     @PatchMapping("/{id}")
     ResponseEntity<?> updateProducer(@PathVariable Long id, @Valid @RequestBody ProducerDto producerDto) {
+        log.info("Updating producer with Id: {}", id);
         return producerService.updateProducer(id, producerDto)
                 .map(producer -> ResponseEntity.noContent().build())
                 .orElse(ResponseEntity.notFound().build());
@@ -56,6 +61,7 @@ class ProducerController {
     @DeleteMapping("/{id}")
     ResponseEntity<?> deleteProducer(@PathVariable Long id) {
         producerService.deleteProducer(id);
+        log.info("Deleted producer with id: {}", id);
         return ResponseEntity.noContent().build();
     }
 }

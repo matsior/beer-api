@@ -79,6 +79,7 @@ class BeerController {
     @DeleteMapping("/{id:[0-9]*}")
     ResponseEntity<?> deleteBeer(@PathVariable Long id) {
         beerService.deleteBeer(id);
+        log.info("Deleted beer with id: {}", id);
         return ResponseEntity.noContent().build();
     }
 }

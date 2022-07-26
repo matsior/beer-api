@@ -2,6 +2,7 @@ package matsior.api.user;
 
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import matsior.api.user.dto.UserFullResponse;
 import matsior.api.user.dto.UserSaveRequest;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/users")
 @RequiredArgsConstructor
+@Slf4j
 class UserController {
 
     private final UserService userService;
@@ -41,6 +43,7 @@ class UserController {
                 .path("/{id}")
                 .buildAndExpand(savedUser.id())
                 .toUri();
+        log.info("New user added: [id: {}, username: '{}']", savedUser.id(), savedUser.username());
         return ResponseEntity.created(uri).body(savedUser);
     }
 
@@ -48,6 +51,7 @@ class UserController {
     @Operation(summary = "Replacing user by Id")
     @PutMapping("/{id}")
     ResponseEntity<?> replaceUser(@PathVariable Long id, @Valid @RequestBody UserSaveRequest userSaveRequest) {
+        log.info("Replacing user with Id: {}", id);
         return userService.replaceUser(id, userSaveRequest)
                 .map(user -> ResponseEntity.noContent().build())
                 .orElse(ResponseEntity.notFound().build());
@@ -57,6 +61,7 @@ class UserController {
     @DeleteMapping("/{id}")
     ResponseEntity<?> deleteById(@PathVariable Long id) {
         userService.deleteUser(id);
+        log.info("Deleted beer style with id: {}", id);
         return ResponseEntity.noContent().build();
     }
 }

@@ -1,6 +1,7 @@
 package matsior.api.style;
 
 import io.swagger.v3.oas.annotations.Operation;
+import lombok.extern.slf4j.Slf4j;
 import matsior.api.style.dto.BeerStyleDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/styles")
+@Slf4j
 class BeerStyleController {
     private final BeerStyleServiceImpl beerStyleService;
 
@@ -40,12 +42,14 @@ class BeerStyleController {
                 .path("{id}")
                 .buildAndExpand(savedBeerStyle.id())
                 .toUri();
+        log.info("New beer style added: [id: {}, name: '{}']", savedBeerStyle.id(), savedBeerStyle.name());
         return ResponseEntity.created(savedBeerStyleUri).body(savedBeerStyle);
     }
 
     @Operation(summary = "Replace existing beer style by Id")
     @PutMapping("/{id}")
     ResponseEntity<?> replaceBeerStyle(@PathVariable Long id, @RequestBody BeerStyleDto beerStyleDto) {
+        log.info("Replacing beer style with Id: {}", id);
         return beerStyleService.replaceBeerStyle(id, beerStyleDto)
                 .map(beerStyle -> ResponseEntity.noContent().build())
                 .orElse(ResponseEntity.notFound().build());
@@ -54,6 +58,7 @@ class BeerStyleController {
     @Operation(summary = "Partially update beer style by Id")
     @PatchMapping("/{id}")
     ResponseEntity<?> updateBeerStyle(@PathVariable Long id, @RequestBody BeerStyleDto beerStyleDto) {
+        log.info("Updating beer style with Id: {}", id);
         return beerStyleService.updateBeerStyle(id, beerStyleDto)
                 .map(beerStyle -> ResponseEntity.noContent().build())
                 .orElse(ResponseEntity.notFound().build());
@@ -63,6 +68,7 @@ class BeerStyleController {
     @DeleteMapping("/{id}")
     ResponseEntity<?> deleteBeerStyle(@PathVariable Long id) {
         beerStyleService.deleteBeerStyle(id);
+        log.info("Deleted beer style with id: {}", id);
         return ResponseEntity.noContent().build();
     }
 }
