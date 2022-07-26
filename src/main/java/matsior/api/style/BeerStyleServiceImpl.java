@@ -2,6 +2,8 @@ package matsior.api.style;
 
 import lombok.RequiredArgsConstructor;
 import matsior.api.style.dto.BeerStyleDto;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,12 +23,14 @@ class BeerStyleServiceImpl implements BeerStyleService {
                 .toList();
     }
 
+    @Cacheable(cacheNames = "SingleBeerStyle", key = "#id")
     public Optional<BeerStyleDto> findById(Long id) {
         return beerStyleRepository.findById(id)
                 .map(beerStyleMapper::map);
     }
 
     @Override
+    @CachePut(cacheNames = "SingleBeerStyle", key = "#result.id()")
     public BeerStyleDto saveBeerStyle(BeerStyleDto beerStyleDto) {
         BeerStyle beerStyle = new BeerStyle(
                 beerStyleDto.id(),
@@ -36,6 +40,7 @@ class BeerStyleServiceImpl implements BeerStyleService {
         return beerStyleMapper.map(savedBeerStyle);
     }
 
+    @CachePut(cacheNames = "SingleBeerStyle", key = "#id")
     public Optional<BeerStyleDto> replaceBeerStyle(Long id, BeerStyleDto beerStyleDto) {
         if (!beerStyleRepository.existsById(id)) {
             return Optional.empty();

@@ -13,8 +13,7 @@ https://www.ehcache.org/schema/ehcache-core-3.0.xsd">
 
     <cache alias="Basic" uses-template="default"/>
 
-    <cache alias="Beers" uses-template="default"/>
-    <cache alias="BeerStyles" uses-template="default"/>
-    <cache alias="Producers" uses-template="default"/>
-    <cache alias="Users" uses-template="default"/>
+    <cache alias="SingleBeer" uses-template="default"/>
+    <cache alias="SingleBeerStyle" uses-template="default"/>
+    <cache alias="SingleProducer" uses-template="default"/>
 </config>

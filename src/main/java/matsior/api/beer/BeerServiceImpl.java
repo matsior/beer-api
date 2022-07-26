@@ -5,6 +5,7 @@ import matsior.api.beer.dto.BeerFullResponse;
 import matsior.api.beer.dto.BeerSaveRequest;
 import matsior.api.beer.dto.BeerSimpleResponse;
 import matsior.api.exceptionhandling.exception.BeerNameTakenException;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -50,6 +51,7 @@ class BeerServiceImpl implements BeerService{
                 .map(beerMapper::map);
     }
 
+//    @CachePut(cacheNames = "Basic")
     @Override
     public BeerSaveRequest saveBeer(BeerSaveRequest beerSaveRequest) {
         beerRepository.findByName(beerSaveRequest.name()).ifPresent(beer -> {
