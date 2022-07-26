@@ -1,3 +1,5 @@
+--liquibase formatted sql
+--changeset matsior:6
 INSERT INTO
     beer_style(name, description)
 VALUES

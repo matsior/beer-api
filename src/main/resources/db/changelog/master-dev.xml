@@ -9,8 +9,8 @@
     <include file="0003_create_beer_table.xml" relativeToChangelogFile="true"/>
     <include file="0004_create_app_user_table.xml" relativeToChangelogFile="true"/>
 
-    <include file="/db/testdata/test_producers.sql"/>
-    <include file="/db/testdata/test_beer_styles.sql"/>
-    <include file="/db/testdata/test_beers_generated.sql"/>
-    <include file="/db/testdata/test_app_user.sql"/>
+    <include file="/db/testdata/producers.sql"/>
+    <include file="/db/testdata/beer_styles.sql"/>
+    <include file="/db/testdata/beers.sql"/>
+    <include file="/db/testdata/app_user.sql"/>
 </databaseChangeLog>

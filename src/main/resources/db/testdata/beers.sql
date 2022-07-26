@@ -1,3 +1,5 @@
+--liquibase formatted sql
+--changeset matsior:7
 insert into beer (name, producer_id, description, country, alcohol, blg, beer_style_id) values ('Y-Solowarm', 3, 'Psittacula krameri', 'Japan', 3.1, 7.2, 3);
 insert into beer (name, producer_id, description, country, alcohol, blg, beer_style_id) values ('Alphazap', 3, 'Butorides striatus', 'South Georgia and the South Sandwich Islands', 2.0, 7.2, 2);
 insert into beer (name, producer_id, description, country, alcohol, blg, beer_style_id, date_added) values ('Matsoft', 2, 'Uraeginthus granatina', 'Indonesia', 1.3, 1.2, 3, '2021-07-20T18:15:26Z');

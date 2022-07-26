@@ -1,3 +1,5 @@
+--liquibase formatted sql
+--changeset matsior:8
 INSERT INTO
     producer(name, description)
 VALUES
