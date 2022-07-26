@@ -15,3 +15,8 @@ spring:
 server:
   servlet:
     context-path: "/api"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
