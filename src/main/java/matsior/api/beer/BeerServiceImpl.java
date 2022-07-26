@@ -27,7 +27,7 @@ class BeerServiceImpl implements BeerService{
                 .map(beerMapper::map)
                 .toList();
     }
-
+    @Cacheable(cacheNames = "basic")
     public List<BeerSimpleResponse> findAllBeersSimple(int page, Sort.Direction direction, String sortBy) {
         return beerRepository.findAll(PageRequest.of(page - 1, PAGE_SIZE, Sort.by(direction, sortBy)))
                 .stream()
@@ -43,7 +43,7 @@ class BeerServiceImpl implements BeerService{
     }
 
 //    @Cacheable(cacheNames = "beers", key = "#id")
-    @Cacheable(cacheNames = "beers")
+    @Cacheable(cacheNames = "basic")
     @Override
     public Optional<BeerFullResponse> findBeerById(long id) {
         return beerRepository.findById(id)

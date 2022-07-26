@@ -4,4 +4,17 @@
         xsi:schemaLocation="http://www.ehcache.org/v3
 https://www.ehcache.org/schema/ehcache-core-3.0.xsd">
 
+    <cache-template name="default">
+        <expiry>
+            <ttl unit="hours">1</ttl>
+        </expiry>
+        <heap unit="entries">1000</heap>
+    </cache-template>
+
+    <cache alias="Basic" uses-template="default"/>
+
+    <cache alias="Beers" uses-template="default"/>
+    <cache alias="BeerStyles" uses-template="default"/>
+    <cache alias="Producers" uses-template="default"/>
+    <cache alias="Users" uses-template="default"/>
 </config>

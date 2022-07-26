@@ -9,6 +9,9 @@ spring:
       field: any
   profiles:
     active: dev
+  cache:
+    jcache:
+      config: classpath:ehcache.xml
 server:
   servlet:
     context-path: "/api"
