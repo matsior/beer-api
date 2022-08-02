@@ -49,6 +49,9 @@ public class Beer {
     @CreatedDate
     private Instant dateAdded;
 
+    @Version
+    private Integer version;
+
     public Beer(
             String name,
             Producer producer,

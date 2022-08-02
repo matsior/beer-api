@@ -33,6 +33,7 @@
             <column name="date_added" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
+            <column name="version" type="INT"/>
         </createTable>
         <addForeignKeyConstraint baseTableName="beer"
                                  baseColumnNames="producer_id"
