@@ -2,7 +2,6 @@ package matsior.api.producer;
 
 import lombok.RequiredArgsConstructor;
 import matsior.api.producer.dto.ProducerDto;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
