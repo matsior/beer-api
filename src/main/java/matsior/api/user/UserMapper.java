@@ -2,9 +2,9 @@ package matsior.api.user;
 
 import matsior.api.user.dto.UserFullResponse;
 import matsior.api.user.dto.UserSaveRequest;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 class UserMapper {
 
     public User map(UserSaveRequest userSaveRequest) {

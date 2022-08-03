@@ -6,9 +6,9 @@ import matsior.api.beer.dto.BeerSaveRequest;
 import matsior.api.beer.dto.BeerSimpleResponse;
 import matsior.api.producer.ProducerRepository;
 import matsior.api.style.BeerStyleRepository;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 @RequiredArgsConstructor
 public class BeerMapper {
     private final BeerStyleRepository beerStyleRepository;

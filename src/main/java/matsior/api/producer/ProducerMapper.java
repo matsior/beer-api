@@ -1,9 +1,9 @@
 package matsior.api.producer;
 
 import matsior.api.producer.dto.ProducerDto;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 class ProducerMapper {
     public ProducerDto map(Producer producer) {
         return new ProducerDto(

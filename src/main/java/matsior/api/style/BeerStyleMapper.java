@@ -1,9 +1,9 @@
 package matsior.api.style;
 
 import matsior.api.style.dto.BeerStyleDto;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 class BeerStyleMapper {
     public BeerStyleDto map(BeerStyle beer) {
         return new BeerStyleDto(
