@@ -8,4 +8,5 @@ import java.util.Optional;
 interface BeerService {
     BeerSaveRequest saveBeer(BeerSaveRequest beerSaveRequest);
     Optional<BeerFullResponse> findBeerById(long id);
+    void deleteBeer(Long id);
 }

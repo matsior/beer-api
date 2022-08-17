@@ -76,7 +76,7 @@ class BeerController {
     // TODO add patch mapping
 
     @Operation(summary = "Delete Beer by Id")
-    @DeleteMapping("/{id:[0-9]*}")
+    @DeleteMapping("/{id}")
     ResponseEntity<?> deleteBeer(@PathVariable Long id) {
         beerService.deleteBeer(id);
         log.info("Deleted beer with id: {}", id);
